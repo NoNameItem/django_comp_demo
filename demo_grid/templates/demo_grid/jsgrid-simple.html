@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}jsGrid - simple{% endblock %}
+
+{% block page_title %}jsGrid - simple{% endblock %}
+
+{% block breadcrumb_items %}
+  <li class="breadcrumb-item"><a href="{% url 'grid_main' %}">Grids</a></li>
+  <li class="breadcrumb-item active"><a href="{% url 'jsgrid-simple' %}">jsGrid - simple</a></li>
+{% endblock %}
+
+{% block vendor_css %}
+  <link rel="stylesheet" href="{% static "app-assets/vendors/css/tables/jsgrid/jsgrid.min.css" %}">
+  <link rel="stylesheet" href="{% static "app-assets/vendors/css/tables/jsgrid/jsgrid-theme.min.css" %}">
+{% endblock %}
+
+{% block page_content %}
+  <div id="jsGrid"></div>
+  <div id="pager"></div>
+{% endblock %}
+
+{% block vendor_js %}
+  <script src="{% static "app-assets/vendors/js/tables/jsgrid/jsgrid.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/tables/jsgrid/i18n/jsgrid-ru.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/pagination/jquery.twbsPagination.min.js" %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block page_js %}
+  <script src="{% static "js/jsgrid_utils.js" %}" type="text/javascript"></script>
+  <script src="{% static "demo_grid/js/jsgrid-simple.js" %}" type="text/javascript"></script>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsGrid</title>
+    <link rel="stylesheet" href="{% static "jsgrid/jsgrid.min.css" %}">
+    <link rel="stylesheet" href="{% static "jsgrid/jsgrid-theme.min.css" %}">
+</head>
+<body>
+<h1>jsGrid Demo</h1>
+
+<div id="jsGrid" class="js"></div>
+
+<script src="{% static "jsgrid/jsgrid.min.js" %}" type="text/javascript"></script>
+<script src="{% static "jsgrid/i18n/jsgrid-ru.js" %}" type="text/javascript"></script>
+<script src="{% static "demo_grid/js/jsgrid-simple.js" %}"></script>
+</body>
+</html>
