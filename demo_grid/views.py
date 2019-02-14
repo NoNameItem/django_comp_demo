@@ -54,6 +54,7 @@ class EmployeeList(generics.ListCreateAPIView):
     pagination_class = JSGridPagination
     ordering_fields = ("id", "first_name", "last_name", "email", "phone_number", "hire_date", "salary", "commision_pct",
                        "department", "comm")
+    ordering = ('last_name', )
 
 
 class EmployeeDetail(generics.RetrieveUpdateDestroyAPIView):
