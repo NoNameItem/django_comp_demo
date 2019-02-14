@@ -46,6 +46,7 @@ function responseGridErrorNotify(response, row) {
 }
 function getSetPager(pagerContainer, pagerParams) {
   return function(obj) {
+    console.log(obj);
     var itemsCount = obj.data.itemsCount;
     var pageSize = obj.grid.pageSize;
     var currentPage = obj.grid.pageIndex;
@@ -53,22 +54,24 @@ function getSetPager(pagerContainer, pagerParams) {
 
 
     function initPager(container, p_pageCount, p_currentPage) {
-      container.twbsPagination({
-        totalPages : p_pageCount,
-        startPage : p_currentPage,
-        hideOnlyOnePage : false,
-        visiblePages : 10,
-        paginationClass : "pagination justify-content-end",
-        initiateStartPageClick : false,
-        first : '<<',
-        prev : '<',
-        next : '>',
-        last : '>>',
-        // handler
-        onPageClick : function(e, page) {
-          obj.grid.openPage(page);
-        }
-      });
+      if (p_pageCount !== 0) {
+        container.twbsPagination({
+          totalPages: p_pageCount,
+          startPage: p_currentPage,
+          hideOnlyOnePage: false,
+          visiblePages: 10,
+          paginationClass: "pagination justify-content-end",
+          initiateStartPageClick: false,
+          first: '<<',
+          prev: '<',
+          next: '>',
+          last: '>>',
+          // handler
+          onPageClick: function (e, page) {
+            obj.grid.openPage(page);
+          }
+        });
+      }
     }
 
     if (!pagerParams.pagerInitialised) {
