@@ -9,5 +9,5 @@ class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Employee
         fields = ("id", "first_name", "last_name", "email", "phone_number", "salary", "commission_pct",
-                  "department", "comm")
+                  "department", "comm", "is_active")
 

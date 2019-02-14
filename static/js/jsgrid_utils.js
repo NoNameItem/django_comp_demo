@@ -44,6 +44,9 @@ function responseGridErrorNotify(response, row) {
     processFieldError(row, "", i, response.responseJSON[i]);
   }
 }
+
+// Генераторы функций для грида
+
 function getSetPager(pagerContainer, pagerParams) {
   return function(obj) {
     console.log(obj);
@@ -54,6 +57,8 @@ function getSetPager(pagerContainer, pagerParams) {
 
 
     function initPager(container, p_pageCount, p_currentPage) {
+      console.log(p_pageCount);
+      console.log(p_currentPage);
       if (p_pageCount !== 0) {
         container.twbsPagination({
           totalPages: p_pageCount,
@@ -84,5 +89,20 @@ function getSetPager(pagerContainer, pagerParams) {
       }
     }
     pagerParams.totalPages = pageCount;
+  }
+}
+
+function getRowEdit(grid_selector){
+  return function(obj){
+    $(grid_selector).jsGrid("editItem", obj.item);
+  }
+}
+
+function getRowSelect(grid_selector, callback){
+  var $callback = callback || function () {};
+  return function (obj) {
+    var $row = $(grid_selector).jsGrid("rowByItem", obj.item);
+    $(grid_selector).find("tr.selected").removeClass("selected");
+    $row.addClass("selected");
   }
 }

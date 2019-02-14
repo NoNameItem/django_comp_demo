@@ -38,3 +38,8 @@ html body .content .content-wrapper .content-header-title,
 .jsgrid {
 	padding-bottom: .5em;
 }
+
+.jsgrid .selected td {
+	background-color: #c4e2ff;
+	border-color: #c4e2ff;
+}

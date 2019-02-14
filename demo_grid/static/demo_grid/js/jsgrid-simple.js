@@ -1,4 +1,4 @@
-let pagerContainer = $('#role-pager');
+let pagerContainer = $('#pager');
 var pagerParams = {
   pagerInitialised : false,
   totalPages : 0
@@ -44,7 +44,7 @@ let controller ={
         responseGridErrorNotify(response, $(".jsgrid-update-row"));
         gridErrorTooltip({row : $(".jsgrid-update-row")})
       } else {
-        errorNotify("Работник не найден", "Возможно, изменяемый работник была удалена, обновите страницу")
+        errorNotify("Работник не найден", "Возможно, изменяемый работник был удален, обновите страницу")
       }
     });
   },
@@ -56,7 +56,7 @@ let controller ={
       data: item
     }).fail(function(response, textStatus, errorThrown) {
       if (response.status == 404) {
-        errorNotify("Роль не найдена", "Возможно, удаляемая роль была удалена, обновите страницу")
+        errorNotify("Работник не найден", "Возможно, удаляемый работник был удален, обновите страницу")
       }
     });
   },
@@ -73,6 +73,7 @@ $("#jsGrid").jsGrid({
   pageLoading : true,
   filtering   : true,
   pagerFormat : "",
+  pageSize    : 5,
 
   controller : controller,
   autoload   : true,
@@ -80,7 +81,8 @@ $("#jsGrid").jsGrid({
   invalidNotify : gridErrorNotify,
 
   // disable edit on click
-  rowClick : function() {},
+  rowClick       : getRowSelect("#jsGrid"),
+  rowDoubleClick : getRowEdit("#jsGrid"),
 
   fields : [
     {
@@ -98,6 +100,13 @@ $("#jsGrid").jsGrid({
         message   : 'Поле "Имя" должно быть заполнено',
         param     : []
       }
+    },
+    {
+      name      : "is_active",
+      type      : "checkbox",
+      title     : "Активен",
+      insertcss : "is_active",
+      editcss   : "is_active"
     },
     {
       name      : "last_name",
@@ -128,12 +137,7 @@ $("#jsGrid").jsGrid({
       type      : "text",
       title     : "Номер телефона",
       insertcss : "phone_number",
-      editcss   : "phone_number",
-      validate  : {
-        validator : "required",
-        message   : 'Поле "Номер телефона" должно быть заполнено',
-        param     : []
-      }
+      editcss   : "phone_number"
     },
     {
       name      : "salary",
