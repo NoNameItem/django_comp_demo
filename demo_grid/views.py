@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 import django_filters
 from django_filters import rest_framework
+from django_filters.widgets import BooleanWidget
 from rest_framework import generics
 from rest_framework.filters import OrderingFilter
 from rest_framework.pagination import PageNumberPagination
@@ -41,7 +42,7 @@ class EmployeeFilter(rest_framework.FilterSet):
     commission_pct = django_filters.NumberFilter(field_name="commission_pct")
     department = django_filters.CharFilter(field_name="department", lookup_expr="icontains")
     comm = django_filters.CharFilter(field_name="comm", lookup_expr="icontains")
-    is_active = django_filters.BooleanFilter(field_name="is_active")
+    is_active = django_filters.BooleanFilter(field_name="is_active", widget=BooleanWidget())
 
 # Представления
 
