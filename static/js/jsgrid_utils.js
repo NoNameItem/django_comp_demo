@@ -1,5 +1,72 @@
 jsGrid.locale("ru");
 
+// Кастомные поля jsGrid
+
+// Дата
+var MyDateField = function(config) {
+    jsGrid.Field.call(this, config);
+};
+
+MyDateField.prototype = new jsGrid.Field({
+
+    css: "date-field",            // redefine general property 'css'
+    align: "center",              // redefine general property 'align'
+
+
+    sorter: function(date1, date2) {
+        return new Date(date1) - new Date(date2);
+    },
+
+    itemTemplate: function(value) {
+        return new Date(value).toLocaleDateString();
+    },
+
+    insertTemplate: function(value) {
+        return this._insertPicker = $("<input>").datetimepicker({format: 'DD.MM.YYYY' });
+    },
+
+    filterTemplate: function(value) {
+        return this._filterPicker = $("<input>").datetimepicker({format: 'DD.MM.YYYY' });
+    },
+
+    editTemplate: function(value) {
+        this._editPicker = $("<input>").datetimepicker({format: 'DD.MM.YYYY'});
+        this._editPicker.data("DateTimePicker").date(new Date(value));
+        return this._editPicker
+    },
+
+    insertValue: function() {
+      var insertValue = this._insertPicker.data('DateTimePicker').date();
+			if (typeof insertValue !== 'undefined' && insertValue !== null) {
+				return insertValue.format("YYYY-MM-DD");
+			} else {
+				return null;
+			}
+    },
+
+    filterValue: function() {
+      var filterValue = this._filterPicker.data('DateTimePicker').date();
+			if (typeof filterValue !== 'undefined' && filterValue !== null) {
+				return filterValue.format("YYYY-MM-DD");
+			} else {
+				return null;
+			}
+    },
+
+    editValue: function() {
+      var editValue = this._editPicker.data('DateTimePicker').date();
+			if (typeof editValue !== 'undefined' && editValue !== null) {
+				return editValue.format("YYYY-MM-DD");
+			} else {
+				return null;
+			}
+    }
+});
+
+jsGrid.fields.date = MyDateField;
+
+// Вспомогательные функции для работы с jsGrid
+
 function gridErrorNotify(args) {
   $.notifyClose();
   $.map(

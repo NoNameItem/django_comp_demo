@@ -36,7 +36,7 @@ class EmployeeFilter(rest_framework.FilterSet):
     last_name = django_filters.CharFilter(field_name="last_name", lookup_expr="icontains")
     email = django_filters.CharFilter(field_name="email", lookup_expr="icontains")
     phone_number = django_filters.CharFilter(field_name="phone_number", lookup_expr="icontains")
-    # hire_date = django_filters.DateFilter(field_name="hire_date", lookup_expr="eq")
+    hire_date = django_filters.DateFilter(field_name="hire_date")
     salary = django_filters.NumberFilter(field_name="salary")
     commission_pct = django_filters.NumberFilter(field_name="commission_pct")
     department = django_filters.CharFilter(field_name="department", lookup_expr="icontains")
@@ -52,8 +52,8 @@ class EmployeeList(generics.ListCreateAPIView):
     filter_backends = (JSGridOrderingFilter, rest_framework.DjangoFilterBackend,)
     filterset_class = EmployeeFilter
     pagination_class = JSGridPagination
-    ordering_fields = ("id", "first_name", "last_name", "email", "phone_number", "hire_date", "salary", "commission_pct",
-                       "department", "comm", "is_active")
+    ordering_fields = ("id", "first_name", "last_name", "email", "phone_number", "hire_date", "salary",
+                       "commission_pct", "department", "comm", "is_active", "hire_date")
     ordering = ("-is_active", "last_name")
 
 

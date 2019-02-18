@@ -37,6 +37,7 @@ html body .content .content-wrapper .content-header-title,
 
 .jsgrid {
 	padding-bottom: .5em;
+	overflow: visible;
 }
 
 .jsgrid .selected td {

@@ -90,6 +90,18 @@ $("#jsGrid").jsGrid({
       width : 50
     },
     {
+      name      : "last_name",
+      type      : "text",
+      title     : "Фамилия",
+      insertcss : "last_name",
+      editcss   : "last_name",
+      validate  : {
+        validator : "required",
+        message   : 'Поле "Фамилия" должно быть заполнено',
+        param     : []
+      }
+    },
+    {
       name      : "first_name",
       type      : "text",
       title     : "Имя",
@@ -109,18 +121,6 @@ $("#jsGrid").jsGrid({
       editcss   : "is_active"
     },
     {
-      name      : "last_name",
-      type      : "text",
-      title     : "Фамилия",
-      insertcss : "last_name",
-      editcss   : "last_name",
-      validate  : {
-        validator : "required",
-        message   : 'Поле "Фамилия" должно быть заполнено',
-        param     : []
-      }
-    },
-    {
       name      : "email",
       type      : "text",
       title     : "Email",
@@ -138,6 +138,13 @@ $("#jsGrid").jsGrid({
       title     : "Номер телефона",
       insertcss : "phone_number",
       editcss   : "phone_number"
+    },
+    {
+      name      : "hire_date",
+      type      : "date",
+      title     : "Дата найма",
+      insertcss : "hire_date",
+      editcss   : "hire_date"
     },
     {
       name      : "salary",

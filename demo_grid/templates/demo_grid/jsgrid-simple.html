@@ -13,6 +13,7 @@
 {% block vendor_css %}
   <link rel="stylesheet" href="{% static "app-assets/vendors/css/tables/jsgrid/jsgrid.min.css" %}">
   <link rel="stylesheet" href="{% static "app-assets/vendors/css/tables/jsgrid/jsgrid-theme.min.css" %}">
+  <link rel="stylesheet" href="{% static "app-assets/vendors/css/pickers/datetime/bootstrap-datetimepicker.css" %}">
 {% endblock %}
 
 {% block page_content %}
@@ -24,6 +25,9 @@
   <script src="{% static "app-assets/vendors/js/tables/jsgrid/jsgrid.min.js" %}" type="text/javascript"></script>
   <script src="{% static "app-assets/vendors/js/tables/jsgrid/i18n/jsgrid-ru.js" %}" type="text/javascript"></script>
   <script src="{% static "app-assets/vendors/js/pagination/jquery.twbsPagination.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/pickers/dateTime/moment-with-locales.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/pickers/dateTime/bootstrap-datetimepicker.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/forms/extended/inputmask/jquery.inputmask.bundle.min.js" %}"></script>
 {% endblock %}
 
 {% block page_js %}
