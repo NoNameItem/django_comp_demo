@@ -39,8 +39,8 @@ class EmployeeFilter(rest_framework.FilterSet):
     email = django_filters.CharFilter(field_name="email", lookup_expr="icontains")
     phone_number = django_filters.CharFilter(field_name="phone_number", lookup_expr="icontains")
     # hire_date = django_filters.DateFilter(field_name="hire_date", lookup_expr="eq")
-    salary = django_filters.NumberFilter(field_name="salary", lookup_expr="eq")
-    commission_pct = django_filters.NumberFilter(field_name="commission_pct", lookup_expr="eq")
+    salary = django_filters.NumberFilter(field_name="salary", lookup_expr="exact")
+    commission_pct = django_filters.NumberFilter(field_name="commission_pct", lookup_expr="exact")
     department = django_filters.CharFilter(field_name="department", lookup_expr="icontains")
     comm = django_filters.CharFilter(field_name="comm", lookup_expr="icontains")
 

@@ -14,7 +14,7 @@ class Employee(models.Model):
     phone_number = models.CharField(max_length=15, null=True, verbose_name="Номер телефона")
     # hire_date = models.DateField(verbose_name="Дата найма")
     salary = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Зарплата")
-    commission_pct = models.DecimalField(null=True, max_digits=2, decimal_places=2, verbose_name="Процент с продаж")
+    commission_pct = models.DecimalField(null=True, max_digits=4, decimal_places=2, verbose_name="Процент с продаж")
     department = models.ForeignKey(Department, null=True, default='---', on_delete=models.SET_NULL)
     comm = models.TextField(null=True, verbose_name="Комментарий")
 
