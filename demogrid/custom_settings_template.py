@@ -8,9 +8,12 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = None
-DEBUG = None
+SECRET_KEY = "oracle"
+DEBUG = True
 ALLOWED_HOSTS = None
-DATABASES = {}
-LANGUAGE_CODE = None
-TIME_ZONE = None
+DATABASES = {'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }}
+LANGUAGE_CODE = "en-us"
+TIME_ZONE = 'UTC'

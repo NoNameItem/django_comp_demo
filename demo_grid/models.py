@@ -2,6 +2,10 @@ from django.db import models
 
 # Create your models here.
 
+class Department(models.Model):
+    code = models.CharField(max_length=30, verbose_name="Код", primary_key=True)
+    name = models.CharField(max_length=300, verbose_name="Наименование")
+
 
 class Employee(models.Model):
     first_name = models.CharField(max_length=30, verbose_name="Имя")
@@ -11,5 +15,6 @@ class Employee(models.Model):
     # hire_date = models.DateField(verbose_name="Дата найма")
     salary = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Зарплата")
     commission_pct = models.DecimalField(null=True, max_digits=2, decimal_places=2, verbose_name="Процент с продаж")
-    department = models.CharField(max_length=250, verbose_name="Отдел")
+    department = models.ForeignKey(Department, null=True, default='---', on_delete=models.SET_NULL)
     comm = models.TextField(null=True, verbose_name="Комментарий")
+

@@ -23,5 +23,8 @@ urlpatterns = [
   path('', TemplateView.as_view(template_name="demo_grid/main.html"), name='grid_main'),
   path('jsgrid-simple', TemplateView.as_view(template_name="demo_grid/jsgrid-simple.html"), name='jsgrid-simple'),
   path('employee', views.EmployeeList.as_view()),
-  path('employee/<int:pk>', views.EmployeeDetail.as_view())
+  path('employee/<int:pk>', views.EmployeeDetail.as_view()),
+  path('jsgrid-simple-1', TemplateView.as_view(template_name="demo_grid/jsgrid-simple-1.html"), name='jsgrid-simple-1'),
+  path('department', views.DepartmentList.as_view()),
+  path('department/<str:pk>', views.DepartmentDetail.as_view())
 ]
