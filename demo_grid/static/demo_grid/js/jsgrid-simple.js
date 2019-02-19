@@ -63,7 +63,7 @@ let controller ={
 };
 
 $("#jsGrid").jsGrid({
-  width  : "100%",
+  width  : "120%",
   height : "auto",
 
   inserting   : true,
