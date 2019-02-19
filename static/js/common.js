@@ -1,10 +1,20 @@
-let csrftoken = Cookies.get('csrftoken');
+let csrftoken = Cookies.get('csrftoken'); // Получаем csrf-токен из куки
 
+/**
+ * @summary Проверяет, требует ли метод передачи csrf-токена
+ * @param method - проверяемый метод
+ * @returns {*|boolean} - Проверяемый метод не требует передачи csrf-токена
+ */
 function csrfSafeMethod(method) {
   // these HTTP methods do not require CSRF protection
   return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
 
+/**
+ * @summary Переопределяет стандартный шаблон уведомления и вызывает bootstrap-notify
+ * @param options - см. документацию на bootstrap-notify
+ * @param settings - см. документацию на bootstrap-notify
+ */
 function myNotify(options, settings) {
   settings.template = '<div data-notify="container" class="notify col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
     '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
@@ -25,6 +35,11 @@ function myNotify(options, settings) {
   $.notify(options, settings);
 }
 
+/**
+ * @summary Стандартная функция вывода ошибок. Использует myNotify
+ * @param title - Заголовок сообщения об ошибке
+ * @param message - Сообщение об ошибке
+ */
 function errorNotify(title, message) {
   myNotify(
     {
@@ -43,6 +58,7 @@ function errorNotify(title, message) {
   );
 }
 
+// Добавляем в идентификацию ajax-запросов csrf-токен там, где это необходимо
 $.ajaxSetup({
   beforeSend: function (xhr, settings) {
     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
