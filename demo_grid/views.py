@@ -13,26 +13,36 @@ from demo_grid.serializers import EmployeeSerializer
 
 
 def hello_world(request):
+    """
+    Тестовое представление
+    :param request: http-запрос
+    :return: Hello, World!
+    """
     return render(request, 'demo_grid/1.html', {})
-
-
-def jsgrid_demo(request):
-    return render(request, 'demo_grid/js_grid_template.html', {})
 
 
 # Вспомогательные классы и функции
 
 
 class JSGridOrderingFilter(OrderingFilter):
+    """
+    Стандартный сортирующий фильтр для работы с jsGrid
+    """
     ordering_param = "sortField"
 
 
 class JSGridPagination(PageNumberPagination):
+    """
+    Стандартная пагинация для работы с jsGrid
+    """
     page_query_param = "pageIndex"
     page_size_query_param = "pageSize"
 
 
 class EmployeeFilter(rest_framework.FilterSet):
+    """
+    Фильтры над моделью Employee
+    """
     first_name = django_filters.CharFilter(field_name="first_name", lookup_expr="icontains")
     last_name = django_filters.CharFilter(field_name="last_name", lookup_expr="icontains")
     email = django_filters.CharFilter(field_name="email", lookup_expr="icontains")
@@ -42,12 +52,22 @@ class EmployeeFilter(rest_framework.FilterSet):
     commission_pct = django_filters.NumberFilter(field_name="commission_pct")
     department = django_filters.CharFilter(field_name="department", lookup_expr="icontains")
     comm = django_filters.CharFilter(field_name="comm", lookup_expr="icontains")
-    is_active = django_filters.BooleanFilter(field_name="is_active", widget=BooleanWidget())
+    is_active = django_filters.BooleanFilter(
+        field_name="is_active", widget=BooleanWidget())  # Виджет нужен для преобразования из строки в тип Boolean
 
 # Представления
 
 
 class EmployeeList(generics.ListCreateAPIView):
+    """
+    Список всех сотрудников
+
+    get:
+    Список всех сотруджников
+
+    post:
+    Создание нового сотрудника
+    """
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     filter_backends = (JSGridOrderingFilter, rest_framework.DjangoFilterBackend,)
@@ -59,5 +79,17 @@ class EmployeeList(generics.ListCreateAPIView):
 
 
 class EmployeeDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Детали о сотруднике
+
+    get:
+    Информацая о сотруднике
+
+    put:
+    Изменение информации о сотруднике
+
+    delete:
+    Удаление сотрудника
+    """
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer

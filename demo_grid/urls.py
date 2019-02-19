@@ -19,9 +19,14 @@ from django.views.generic import TemplateView
 from demo_grid import views
 
 urlpatterns = [
+  # Тестовое представление
   path('hello_world', views.hello_world),
+  # Главная страница раздела Grids
   path('', TemplateView.as_view(template_name="demo_grid/main.html"), name='grid_main'),
+  # Простой jsGrid
   path('jsgrid-simple', TemplateView.as_view(template_name="demo_grid/jsgrid-simple.html"), name='jsgrid-simple'),
+  # Список сотрудников + создание нового
   path('employee', views.EmployeeList.as_view()),
+  # Просмотр, редактирование и удаление сотрудника
   path('employee/<int:pk>', views.EmployeeDetail.as_view())
 ]
