@@ -28,7 +28,6 @@ urlpatterns = [
   # Список сотрудников + создание нового
   path('employee', views.EmployeeList.as_view()),
   # Просмотр, редактирование и удаление сотрудника
-  path('employee/<int:pk>', views.EmployeeDetail.as_view())
   path('employee/<int:pk>', views.EmployeeDetail.as_view()),
   path('jsgrid-simple-1', TemplateView.as_view(template_name="demo_grid/jsgrid-simple-1.html"), name='jsgrid-simple-1'),
   path('department', views.DepartmentList.as_view()),
