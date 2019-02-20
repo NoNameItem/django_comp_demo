@@ -160,7 +160,7 @@ $("#jsGrid").jsGrid({
     },
     {
       name      : "salary",
-      type      : "number",
+      type      : "decimal",
       title     : "Зарплата",
       insertcss : "salary",
       editcss   : "salary",
@@ -172,7 +172,7 @@ $("#jsGrid").jsGrid({
     },
     {
       name      : "commission_pct",
-      type      : "number",
+      type      : "decimal",
       title     : "Процент с продаж",
       insertcss : "commission_pct",
       editcss   : "commission_pct",
