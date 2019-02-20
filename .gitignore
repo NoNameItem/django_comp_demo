@@ -1,5 +1,12 @@
 venv/*
 .idea/*
 __pycache__/*
+*/__pycache__/*
+*/migrations/*
 db.sqlite3
 demogrid/custom_settings.py
+demogrid/Include/*
+demogrid/Lib/*
+demogrid/Scripts/*
+demogrid/pyvenv.cfg
+mydatabase

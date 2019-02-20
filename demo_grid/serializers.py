@@ -12,3 +12,8 @@ class EmployeeSerializer(serializers.ModelSerializer):
         fields = ("id", "first_name", "last_name", "email", "phone_number", "salary", "commission_pct",
                   "department", "comm", "is_active", "hire_date")
 
+
+class DepartmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Department
+        fields = ("code", "name")

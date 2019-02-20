@@ -3,6 +3,10 @@ from django.db import models
 
 # Create your models here.
 
+class Department(models.Model):
+    code = models.CharField(max_length=30, verbose_name="Код", primary_key=True)
+    name = models.CharField(max_length=300, verbose_name="Наименование")
+
 
 class Employee(models.Model):
     """
