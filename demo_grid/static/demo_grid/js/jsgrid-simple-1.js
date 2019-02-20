@@ -37,14 +37,14 @@ let controller ={
   updateItem: function(item) {
     return $.ajax({
       type: "PUT",
-      url: "/demo_grid/department/" + item.code,
+      url: "/demo_grid/department/" + item.id,
       data: item
     }).fail(function(response, textStatus, errorThrown) {
       if (response.status != 404) {
         responseGridErrorNotify(response, $(".jsgrid-update-row"));
         gridErrorTooltip({row : $(".jsgrid-update-row")})
       } else {
-        errorNotify("Работник не найден", "Возможно, изменяемый работник была удалена, обновите страницу")
+        errorNotify("Департамент не найден", "Возможно, изменяемый департамент был удален, обновите страницу")
       }
     });
   },
@@ -52,11 +52,11 @@ let controller ={
   deleteItem: function(item) {
     return $.ajax({
       type: "DELETE",
-      url: "/demo_grid/department/" + item.code,
+      url: "/demo_grid/department/" + item.id,
       data: item
     }).fail(function(response, textStatus, errorThrown) {
       if (response.status == 404) {
-        errorNotify("Роль не найдена", "Возможно, удаляемая роль была удалена, обновите страницу")
+        errorNotify("Департамент не найден", "Возможно, удаляемый департамент был удален, обновите страницу")
       }
     });
   },
@@ -79,25 +79,13 @@ $("#jsGrid1").jsGrid({
 
   invalidNotify : gridErrorNotify,
 
-  // disable edit on click
-  rowClick : function() {},
+  rowClick       : getRowSelect("#jsGrid1"),
+  rowDoubleClick : getRowEdit("#jsGrid1"),
 
   fields : [
     {
       type  : "control",
       width : 50
-    },
-    {
-      name      : "code",
-      type      : "text",
-      title     : "Код отдела",
-      insertcss : "code",
-      editcss   : "code",
-      validate  : {
-        validator : "required",
-        message   : 'Поле "Код" должно быть заполнено',
-        param     : []
-      }
     },
     {
       name      : "name",

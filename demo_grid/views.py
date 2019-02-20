@@ -52,14 +52,14 @@ class EmployeeFilter(rest_framework.FilterSet):
     hire_date = django_filters.DateFilter(field_name="hire_date")
     salary = django_filters.NumberFilter(field_name="salary")
     commission_pct = django_filters.NumberFilter(field_name="commission_pct")
-    department = django_filters.CharFilter(field_name="department", lookup_expr="icontains")
+    department = django_filters.CharFilter(field_name="department")
     comm = django_filters.CharFilter(field_name="comm", lookup_expr="icontains")
     is_active = django_filters.BooleanFilter(
         field_name="is_active", widget=BooleanWidget())  # Виджет нужен для преобразования из строки в тип Boolean
 
+
 class DepartmentFilter(rest_framework.FilterSet):
-    code = django_filters.CharFilter(field_name="code", lookup_expr="icontains")
-    name = django_filters.CharFilter(field_name="code", lookup_expr="icontains")
+    name = django_filters.CharFilter(field_name="name", lookup_expr="icontains")
 
 
 # Представления
@@ -108,8 +108,8 @@ class DepartmentList(generics.ListCreateAPIView):
     filter_backends = (JSGridOrderingFilter, rest_framework.DjangoFilterBackend)
     filterset_class = DepartmentFilter
     pagination_class = JSGridPagination
-    ordering_fields = ("code", "name")
-    ordering = "code"
+    ordering_fields = ("name",)
+    ordering = "name"
 
 
 class DepartmentDetail(generics.RetrieveUpdateDestroyAPIView):

@@ -4,6 +4,19 @@ var pagerParams = {
   totalPages : 0
 };
 
+function refreshDeptsLOV() {
+  $.ajax(
+    {
+      type: "GET",
+      url: "/demo_grid/department"
+    }
+  ).done(function(response){
+    var items = [{id: null, name: null}];
+    items = items.concat(response);
+    $("#jsGrid").jsGrid("fieldOption", "department", "items", items);
+  })
+}
+
 let controller ={
   loadData: function(filter) {
     var d = $.Deferred();
@@ -80,7 +93,6 @@ $("#jsGrid").jsGrid({
 
   invalidNotify : gridErrorNotify,
 
-  // disable edit on click
   rowClick       : getRowSelect("#jsGrid"),
   rowDoubleClick : getRowEdit("#jsGrid"),
 
@@ -167,15 +179,13 @@ $("#jsGrid").jsGrid({
     },
     {
       name      : "department",
-      type      : "text",
+      type      : "select",
       title     : "Отдел",
       insertcss : "department",
       editcss   : "department",
-      validate  : {
-        validator : "required",
-        message   : 'Поле "Отдел" должно быть заполнено',
-        param     : []
-      }
+      items      : [{id: null, name: null}],
+      valueField : "id",
+      textField  : "name"
     },
     {
       name      : "comm",
@@ -191,3 +201,5 @@ $("#jsGrid").jsGrid({
   onItemInvalid  : gridErrorTooltip,
   onDataLoaded   : getSetPager(pagerContainer, pagerParams),
 });
+
+refreshDeptsLOV();

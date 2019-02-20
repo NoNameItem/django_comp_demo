@@ -64,8 +64,8 @@
           <li class="{% if request.resolver_match.url_name == "main" %}active{% else %}menu-item{% endif %}"><a href="{% url 'main' %}"><i class="ft-home"></i><span class="menu-title" >Home</span></a></li>
           <li class="{% if request.resolver_match.url_name == "grid_main" %}active{% else %}menu-item{% endif %} has-sub"><a href="{% url 'grid_main' %}"><i class="ft-grid"></i><span class="menu-title" >Grids</span></a>
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="{% if request.resolver_match.url_name == "jsgrid-simple" %}active{% endif %}"><a class="menu-item" href="{% url "jsgrid-simple" %}" >Сотрудники</a></li>
-                <li class="{% if request.resolver_match.url_name == "jsgrid-simple-1" %}active{% endif %}"><a class="menu-item" href="{% url "jsgrid-simple-1" %}" >Отделы</a></li>
+                <li class="{% if request.resolver_match.url_name == "jsgrid-simple" %}active{% endif %}"><a class="menu-item" href="{% url "jsgrid-simple" %}" >jsGrid - Simple</a></li>
+                <li class="{% if request.resolver_match.url_name == "jsgrid-simple-1" %}active{% endif %}"><a class="menu-item" href="{% url "jsgrid-simple-1" %}" >jsGrid - Master-detail</a></li>
             </ul>
           </li>
 
