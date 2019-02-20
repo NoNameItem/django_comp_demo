@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
-from demogrid import custom_settings_template
+from demogrid import custom_settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -18,12 +18,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = custom_settings_template.SECRET_KEY
+SECRET_KEY = custom_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = custom_settings_template.DEBUG
+DEBUG = custom_settings.DEBUG
 
-ALLOWED_HOSTS = custom_settings_template.ALLOWED_HOSTS
+ALLOWED_HOSTS = custom_settings.ALLOWED_HOSTS
 
 # Application definition
 
@@ -71,7 +71,7 @@ WSGI_APPLICATION = 'demogrid.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = custom_settings_template.DATABASES
+DATABASES = custom_settings.DATABASES
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -94,9 +94,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = custom_settings_template.LANGUAGE_CODE
+LANGUAGE_CODE = custom_settings.LANGUAGE_CODE
 
-TIME_ZONE = custom_settings_template.TIME_ZONE
+TIME_ZONE = custom_settings.TIME_ZONE
 
 USE_I18N = True
 
