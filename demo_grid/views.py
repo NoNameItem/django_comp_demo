@@ -54,8 +54,7 @@ class EmployeeFilter(rest_framework.FilterSet):
     commission_pct = django_filters.NumberFilter(field_name="commission_pct")
     department = django_filters.CharFilter(field_name="department")
     comm = django_filters.CharFilter(field_name="comm", lookup_expr="icontains")
-    is_active = django_filters.BooleanFilter(
-        field_name="is_active", widget=BooleanWidget())  # Виджет нужен для преобразования из строки в тип Boolean
+    is_active = django_filters.BooleanFilter(field_name="is_active", widget=BooleanWidget())  # Виджет нужен для преобразования из строки в тип Boolean
 
 
 class DepartmentFilter(rest_framework.FilterSet):
@@ -78,6 +77,20 @@ class EmployeeList(generics.ListCreateAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     filter_backends = (JSGridOrderingFilter, rest_framework.DjangoFilterBackend,)
+    filterset_class = EmployeeFilter
+    pagination_class = JSGridPagination
+    ordering_fields = ("id", "first_name", "last_name", "email", "phone_number", "hire_date", "salary",
+                       "commission_pct", "department", "comm", "is_active", "hire_date")
+    ordering = ("-is_active", "last_name")
+
+
+class EmployeeFilteredList(generics.ListCreateAPIView):
+    serializer_class = EmployeeSerializer
+
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        return Employee.objects.filter(department_id=pk)
+
     filterset_class = EmployeeFilter
     pagination_class = JSGridPagination
     ordering_fields = ("id", "first_name", "last_name", "email", "phone_number", "hire_date", "salary",
