@@ -125,6 +125,18 @@ class DepartmentList(generics.ListCreateAPIView):
     ordering = "name"
 
 
+class DepartmentFilteredList(generics.ListCreateAPIView):
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        return Department.objects.filter(id=pk)
+    serializer_class = DepartmentSerializer
+    filter_backends = (JSGridOrderingFilter, rest_framework.DjangoFilterBackend)
+    filterset_class = DepartmentFilter
+    pagination_class = JSGridPagination
+    ordering_fields = ("name",)
+    ordering = "name"
+
+
 class DepartmentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer

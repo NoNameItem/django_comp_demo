@@ -9,6 +9,16 @@ function switchDetailGrid(deptId) {
   else {
     $("#jsGrid").show();
     $("#jsGrid").jsGrid("loadData");
+    $.ajax(
+    {
+      type: "GET",
+      url: "/demo_grid/department/" + deptId
+    }
+  ).done(function(response){
+    var items = response;
+    console.log(items);
+    $("#jsGrid").jsGrid("fieldOption", "department", "items", items);
+  })
   }
 }
 
@@ -327,7 +337,7 @@ $("#jsGrid").jsGrid({
   onItemInserted : function(arg) {$.notifyClose();},
   onItemUpdated  : function(arg) {$.notifyClose();},
   onItemInvalid  : gridErrorTooltip,
-  onDataLoaded   : getSetPager(pagerContainer, pagerParams),
+  onDataLoaded   : getSetPager(pagerContainer, pagerParams)
 });
 
 refreshDeptsLOV();
