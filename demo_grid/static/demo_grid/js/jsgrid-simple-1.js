@@ -1,5 +1,9 @@
 var gDeptId;
 
+$(document).ready(function() {
+  $("#jsGrid").hide();
+});
+
 // Управление гридом с сотрудниками
 function switchDetailGrid(deptId) {
   gDeptId = deptId;
@@ -15,9 +19,7 @@ function switchDetailGrid(deptId) {
       url: "/demo_grid/department/" + deptId
     }
   ).done(function(response){
-    var items = response;
-    console.log(items);
-    $("#jsGrid").jsGrid("fieldOption", "department", "items", items);
+    $("#jsGrid").jsGrid("fieldOption", "department", "items", response);
   })
   }
 }
