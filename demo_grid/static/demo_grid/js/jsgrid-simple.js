@@ -77,7 +77,7 @@ let controller ={
 
 $("#jsGrid").jsGrid({
   width  : "120%",
-  height : "auto",
+  height : "500px",
 
   inserting   : true,
   editing     : true,
