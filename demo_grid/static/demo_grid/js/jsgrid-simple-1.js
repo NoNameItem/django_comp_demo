@@ -7,7 +7,6 @@ $(document).ready(function() {
 // Управление гридом с сотрудниками
 function switchDetailGrid(deptId) {
   gDeptId = deptId;
-
   if (gDeptId == null)
     $("#jsGrid").hide();
   else {
@@ -20,7 +19,8 @@ function switchDetailGrid(deptId) {
     }
   ).done(function(response){
     $("#jsGrid").jsGrid("fieldOption", "department", "items", response);
-  })
+  });
+    $("#jsGrid").jsGrid("loadData");
   }
 }
 
@@ -106,7 +106,7 @@ $("#jsGrid1").jsGrid({
 
   invalidNotify : gridErrorNotify,
 
-  rowClick       : function(args) { getRowSelect("#jsGrid1", switchDetailGrid(args.item.id)) },
+  rowClick       : getRowSelect("#jsGrid1", function(args) { switchDetailGrid(args.item.id) }),
   rowDoubleClick : getRowEdit("#jsGrid1"),
 
   fields : [
