@@ -1,16 +1,16 @@
 var gDeptId;
 
 $(document).ready(function() {
-  $("#jsGrid").hide();
+  $("#jsGrid-container").hide();
 });
 
 // Управление гридом с сотрудниками
 function switchDetailGrid(deptId) {
   gDeptId = deptId;
   if (gDeptId == null)
-    $("#jsGrid").hide();
+    $("#jsGrid-container").hide();
   else {
-    $("#jsGrid").show();
+    $("#jsGrid-container").show();
     $("#jsGrid").jsGrid("loadData");
     $.ajax(
     {
