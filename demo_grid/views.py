@@ -14,6 +14,7 @@ from demo_grid.serializers import EmployeeSerializer
 from demo_grid.models import Department
 from demo_grid.serializers import DepartmentSerializer
 
+
 def hello_world(request):
     """
     Тестовое представление

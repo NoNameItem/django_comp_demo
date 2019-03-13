@@ -17,6 +17,8 @@ from django.urls import path
 from django.views.generic import TemplateView
 
 from demo_grid import views
+from ldapAuth import views as ldap_views
+
 
 urlpatterns = [
   # Тестовое представление
@@ -32,5 +34,7 @@ urlpatterns = [
   path('jsgrid-simple-1', TemplateView.as_view(template_name="demo_grid/jsgrid-simple-1.html"), name='jsgrid-simple-1'),
   path('department', views.DepartmentList.as_view()),
   path('department/<int:pk>', views.DepartmentFilteredList.as_view()),
-  path('department/<int:pk>/employees', views.EmployeeFilteredList.as_view())
+  path('department/<int:pk>/employees', views.EmployeeFilteredList.as_view()),
+  path('auth', ldap_views.auth)
 ]
+
