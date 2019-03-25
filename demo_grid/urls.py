@@ -19,22 +19,26 @@ from django.views.generic import TemplateView
 from demo_grid import views
 from ldapAuth import views as ldap_views
 
+from django.contrib.auth.decorators import login_required
+
 
 urlpatterns = [
   # Тестовое представление
-  path('hello_world', views.hello_world),
+  path('hello_world', login_required(views.hello_world)),
   # Главная страница раздела Grids
-  path('', TemplateView.as_view(template_name="demo_grid/main.html"), name='grid_main'),
+  path('', login_required(TemplateView.as_view(template_name="demo_grid/main.html")), name='grid_main'),
   # Простой jsGrid
-  path('jsgrid-simple', TemplateView.as_view(template_name="demo_grid/jsgrid-simple.html"), name='jsgrid-simple'),
+  path('jsgrid-simple', login_required(TemplateView.as_view(template_name="demo_grid/jsgrid-simple.html")), name='jsgrid-simple'),
   # Список сотрудников + создание нового
-  path('employee', views.EmployeeList.as_view()),
+  path('employee', login_required(views.EmployeeList.as_view())),
   # Просмотр, редактирование и удаление сотрудника
-  path('employee/<int:pk>', views.EmployeeDetail.as_view()),
-  path('jsgrid-simple-1', TemplateView.as_view(template_name="demo_grid/jsgrid-simple-1.html"), name='jsgrid-simple-1'),
-  path('department', views.DepartmentList.as_view()),
-  path('department/<int:pk>', views.DepartmentFilteredList.as_view()),
-  path('department/<int:pk>/employees', views.EmployeeFilteredList.as_view()),
-  path('auth', ldap_views.auth)
+  path('employee/<int:pk>', login_required(views.EmployeeDetail.as_view())),
+  path('jsgrid-simple-1', login_required(TemplateView.as_view(template_name="demo_grid/jsgrid-simple-1.html")), name='jsgrid-simple-1'),
+  path('department', login_required(views.DepartmentList.as_view())),
+  path('department/<int:pk>', login_required(views.DepartmentFilteredList.as_view())),
+  path('department/<int:pk>/employees', login_required(views.EmployeeFilteredList.as_view())),
+  path('auth', ldap_views.auth),
+  path('user_login', ldap_views.user_login),
+  path('user_logout', ldap_views.user_logout)
 ]
 

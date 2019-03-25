@@ -46,6 +46,7 @@ class EmployeeFilter(rest_framework.FilterSet):
     """
     Фильтры над моделью Employee
     """
+
     first_name = django_filters.CharFilter(field_name="first_name", lookup_expr="icontains")
     last_name = django_filters.CharFilter(field_name="last_name", lookup_expr="icontains")
     email = django_filters.CharFilter(field_name="email", lookup_expr="icontains")
@@ -62,6 +63,7 @@ class EmployeeDeptFilter(rest_framework.FilterSet):
     """
     Фильтры над моделью Employee
     """
+
     first_name = django_filters.CharFilter(field_name="first_name", lookup_expr="icontains")
     last_name = django_filters.CharFilter(field_name="last_name", lookup_expr="icontains")
     email = django_filters.CharFilter(field_name="email", lookup_expr="icontains")
@@ -78,6 +80,7 @@ class DepartmentFilter(rest_framework.FilterSet):
 # Представления
 
 
+
 class EmployeeList(generics.ListCreateAPIView):
     """
     Список всех сотрудников
@@ -88,6 +91,7 @@ class EmployeeList(generics.ListCreateAPIView):
     post:
     Создание нового сотрудника
     """
+
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     filter_backends = (JSGridOrderingFilter, rest_framework.DjangoFilterBackend,)
@@ -99,6 +103,7 @@ class EmployeeList(generics.ListCreateAPIView):
 
 
 class EmployeeFilteredList(generics.ListCreateAPIView):
+
     serializer_class = EmployeeSerializer
 
     def get_queryset(self):
@@ -127,6 +132,7 @@ class EmployeeDetail(generics.RetrieveUpdateDestroyAPIView):
     delete:
     Удаление сотрудника
     """
+
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
 

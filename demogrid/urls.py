@@ -16,7 +16,9 @@ Including another URLconf
 from django.urls import path, include
 from django.views.generic import TemplateView
 
+from django.contrib.auth.decorators import login_required
+
 urlpatterns = [
   path('demo_grid/', include('demo_grid.urls')),
-  path('', TemplateView.as_view(template_name="main_page.html"), name="main")
+  path('', login_required(TemplateView.as_view(template_name="main_page.html")), name="main")
 ]

@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
-    'demo_grid'
+    'demo_grid',
+    'ldapAuth',
 ]
 
 MIDDLEWARE = [
@@ -120,10 +121,13 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+LOGIN_URL = "/demo_grid/auth"
+
 # LDAP SETTINGS
 
+AUTH_LDAP_USER_ATTR_MAP = {"first_name": "displayName", "email": "mail"}
 AUTH_LDAP_SERVER_URI = "ldap://10.104.89.74"
 AUTH_LDAP_AUTHORIZE_ALL_USERS = True
-AUTH_LDAP_BIND_DN = ""
-AUTH_LDAP_BIND_PASSWORD = ""
-AUTH_LDAP_USER_SEARCH = LDAPSearch("dc=inside,dc=glowbyte,dc=com", ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
+AUTH_LDAP_BIND_DN = "CN=Тамилин Евгений,OU=Developers,OU=GlowByte,DC=inside,DC=glowbyte,DC=com"
+AUTH_LDAP_BIND_PASSWORD = "F3df4gvdf6"
+AUTH_LDAP_USER_SEARCH = LDAPSearch("OU=GlowByte,DC=inside,DC=glowbyte,DC=com", ldap.SCOPE_SUBTREE, "(sAMAccountName=%(user)s)")
