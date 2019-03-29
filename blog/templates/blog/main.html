@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Blog{% endblock %}
+
+{% block page_title %}Blog{% endblock %}
+
+{% block breadcrumb_items %}
+  <li class="breadcrumb-item"><a href="{% url 'grid_main' %}">Grids</a></li>
+  <li class="breadcrumb-item active"><a href="{% url 'entries' %}">Blog</a></li>
+{% endblock %}
+
+{% block vendor_css %}
+  <link rel="stylesheet" href="{% static "app-assets/vendors/css/tables/jsgrid/jsgrid.min.css" %}">
+  <link rel="stylesheet" href="{% static "app-assets/vendors/css/tables/jsgrid/jsgrid-theme.min.css" %}">
+  <link rel="stylesheet" href="{% static "app-assets/vendors/css/pickers/datetime/bootstrap-datetimepicker.css" %}">
+  <link rel="stylesheet" href="{% static "css/ckeditor.css" %}">
+{% endblock %}
+
+{% block page_content %}
+  <a href="" title="Добавить" class="btn btn-primary" style="position: fixed;bottom: 10px;right: 25px; z-index:1"><i class="fa fa-plus"></i></a>
+  <div id="blog">
+      {% for e in blog_entries_list %}
+         {% include "blog/entry.html" %}
+      {% empty %}
+          <div class="timeline-card card border-grey border-lighten-2"><p class="card-text">Записей нет!</p></div>
+      {% endfor %}
+  <textarea name="content" id="editor"></textarea>
+  </div>
+
+{% endblock %}
+
+{% block vendor_js %}
+  <script src="{% static "app-assets/vendors/js/tables/jsgrid/jsgrid.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/tables/jsgrid/i18n/jsgrid-ru.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/pagination/jquery.twbsPagination.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/pickers/dateTime/moment-with-locales.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/pickers/dateTime/bootstrap-datetimepicker.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/forms/extended/inputmask/jquery.inputmask.bundle.min.js" %}"></script>
+{% endblock %}
+
+{% block page_js %}
+    <script src="{% static "js/ckeditor.js" %}" type="text/javascript"></script>
+    <script src="{% static "blog/js/edit_entry.js" %}" type="text/javascript"></script>
+{% endblock %}

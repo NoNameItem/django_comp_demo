@@ -43,14 +43,14 @@
             </ul>
             <ul class="nav navbar-nav float-right">
                 <li class="dropdown dropdown-user nav-item">
-                    <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown" aria-expanded="false"><span class="avatar avatar-online"><img src="{% static "/app-assets/images/portrait/small/avatar-s-1.png" %}" alt="avatar"><i></i></span><span class="user-name">{{ request.GETusername }}</span></a>
+                    <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown" aria-expanded="false"><span class="avatar avatar-online"><img src="{% static "/app-assets/images/portrait/small/avatar-s-1.png" %}" alt="avatar"><i></i></span><span class="user-name">{{ request.user.first_name }}</span></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <!-- <a class="dropdown-item" href="user-profile.html"><i class="ft-user"></i> Edit Profile</a>
                         <a class="dropdown-item" href="app-email.html"><i class="ft-mail"></i> My Inbox</a>
                         <a class="dropdown-item" href="user-cards.html"><i class="ft-check-square"></i> Task</a>
                         <a class="dropdown-item" href="app-chat.html"><i class="ft-message-square"></i> Chats</a>
                         <div class="dropdown-divider"></div> -->
-                        <a class="dropdown-item" href="/demo_grid/user_logout"><i class="ft-power"></i> Logout</a>
+                        <a class="dropdown-item" href="/demo_grid/user_logout"><i class="ft-power"></i> Выйти</a>
                     </div>
                 </li>
             </ul>
@@ -76,7 +76,7 @@
                 <li class="{% if request.resolver_match.url_name == "jsgrid-simple-1" %}active{% endif %}"><a class="menu-item" href="{% url "jsgrid-simple-1" %}" >jsGrid - Master-detail</a></li>
             </ul>
           </li>
-
+          <li class="{% if request.resolver_match.url_name == "entries" %}active{% else %}menu-item{% endif %}"><a href="{% url 'entries' %}"><i class="ft-message-circle"></i><span class="menu-title" >Blog</span></a></li>
         </ul>
       </div>
       <!-- /main menu content-->

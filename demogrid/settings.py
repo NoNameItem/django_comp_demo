@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django_filters',
     'demo_grid',
     'ldapAuth',
+    'blog'
 ]
 
 MIDDLEWARE = [

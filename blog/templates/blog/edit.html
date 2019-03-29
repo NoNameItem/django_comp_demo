@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Blog{% endblock %}
+
+{% block page_title %}Blog{% endblock %}
+
+{% block breadcrumb_items %}
+  <li class="breadcrumb-item"><a href="{% url 'grid_main' %}">Grids</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'entries' %}">Blog</a></li>
+  <li class="breadcrumb-item active"><span>{{ blog_entry.title }}</span></li>
+{% endblock %}
+
+{% block vendor_css %}
+  <link rel="stylesheet" href="{% static "app-assets/vendors/css/tables/jsgrid/jsgrid.min.css" %}">
+  <link rel="stylesheet" href="{% static "app-assets/vendors/css/tables/jsgrid/jsgrid-theme.min.css" %}">
+  <link rel="stylesheet" href="{% static "app-assets/vendors/css/pickers/datetime/bootstrap-datetimepicker.css" %}">
+  <link rel="stylesheet" href="{% static "css/ckeditor.css" %}">
+{% endblock %}
+
+{% block page_content %}
+    <form action="{{ blog_entry.id }}/save" method="post" onsubmit="getEditorData();">
+        <div class="timeline-card card border-grey border-lighten-2">
+            <textarea name="content" id="editor">{{ blog_entry.content }}</textarea>
+        </div>
+        {% csrf_token %}
+        <div style="text-align: end"><button type="submit" class="btn btn-primary btn-min-width"><i class="ft-save"></i> Сохранить</button></div>
+        <input id="editor_data" name="editor_data" style="visibility: hidden;">
+    </form>
+{% endblock %}
+
+{% block vendor_js %}
+  <script src="{% static "app-assets/vendors/js/tables/jsgrid/jsgrid.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/tables/jsgrid/i18n/jsgrid-ru.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/pagination/jquery.twbsPagination.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/pickers/dateTime/moment-with-locales.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/pickers/dateTime/bootstrap-datetimepicker.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "app-assets/vendors/js/forms/extended/inputmask/jquery.inputmask.bundle.min.js" %}"></script>
+{% endblock %}
+
+{% block page_js %}
+    <script src="{% static "js/ckeditor.js" %}" type="text/javascript"></script>
+    <script src="{% static "blog/js/edit_entry.js" %}" type="text/javascript"></script>
+{% endblock %}

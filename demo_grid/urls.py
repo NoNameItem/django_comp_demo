@@ -39,6 +39,7 @@ urlpatterns = [
   path('department/<int:pk>/employees', login_required(views.EmployeeFilteredList.as_view())),
   path('auth', ldap_views.auth),
   path('user_login', ldap_views.user_login),
-  path('user_logout', ldap_views.user_logout)
+  path('user_logout', ldap_views.user_logout),
+  path('blog', login_required(TemplateView.as_view(template_name="blog/main.html")), name='blog')
 ]
 
