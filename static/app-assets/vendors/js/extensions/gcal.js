@@ -51,7 +51,7 @@ FC.sourceNormalizers.push(function(sourceOptions) {
 
 	if (googleCalendarId) { // is this a Google Calendar?
 
-		// make each Google Calendar source uneditable by default
+		// make each Google Calendar employeeSource uneditable by default
 		if (sourceOptions.editable == null) {
 			sourceOptions.editable = false;
 		}
@@ -91,7 +91,7 @@ function transformOptions(sourceOptions, start, end, timezone, calendar) {
 
 	if (!apiKey) {
 		reportError("Specify a googleCalendarApiKey. See http://fullcalendar.io/docs/google_calendar/");
-		return {}; // an empty source to use instead. won't fetch anything.
+		return {}; // an empty employeeSource to use instead. won't fetch anything.
 	}
 
 	// The API expects an ISO8601 datetime with a time and timezone part.
@@ -120,7 +120,7 @@ function transformOptions(sourceOptions, start, end, timezone, calendar) {
 	});
 
 	return $.extend({}, sourceOptions, {
-		googleCalendarId: null, // prevents source-normalizing from happening again
+		googleCalendarId: null, // prevents employeeSource-normalizing from happening again
 		url: url,
 		data: data,
 		startParam: false, // `false` omits this parameter. we already included it above

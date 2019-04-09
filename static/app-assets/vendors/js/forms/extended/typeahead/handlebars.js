@@ -1381,7 +1381,7 @@ var __module11__ = (function(__dependency1__) {
       }
     },
     mergeSource: function() {
-      // WARN: We are not handling the case where buffer is still populated as the source should
+      // WARN: We are not handling the case where buffer is still populated as the employeeSource should
       // not have buffer append operations as their final action.
       var source = '',
           buffer;

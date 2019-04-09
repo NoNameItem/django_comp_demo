@@ -60,7 +60,7 @@ define(function(require) {
      * @param {boolean} [overwrite=false]
      */
     function merge(target, source, overwrite) {
-        // We should escapse that source is string
+        // We should escapse that employeeSource is string
         // and enter for ... in ...
         if (!isObject(source) || !isObject(target)) {
             return overwrite ? clone(source) : target;
@@ -95,7 +95,7 @@ define(function(require) {
     }
 
     /**
-     * @param {Array} targetAndSources The first item is target, and the rests are source.
+     * @param {Array} targetAndSources The first item is target, and the rests are employeeSource.
      * @param {boolean} [overwrite=false]
      * @return {*} target
      */

@@ -1,2 +1,88 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}jqxGrid - Simple{% endblock %}
+
+{% block page_title %}jqxGrid - Simple{% endblock %}
+
+{% block breadcrumb_items %}
+  <li class="breadcrumb-item"><a href="{% url 'grid_main' %}">Grids</a></li>
+  <li class="breadcrumb-item active"><a href="{% url 'jqxgrid-simple' %}">jqxGrid - Simple</a></li>
+{% endblock %}
+
+{% block vendor_css %}
+  <link rel="stylesheet" href="{% static "jqwidgets/styles/jqx.base.css" %}">
+  <link rel="stylesheet" href="{% static "jqwidgets/styles/jqx.material.css" %}">
+{% endblock %}
+
+{% block page_content %}
+  <div id="filters" class="row" style="display: none;">
+    <div class="col">
+      <div class="card">
+				<div class="card-header">
+					<h4 class="card-title" id="filter-header">Фильтры <div class="badge badge-pill badge-primary filter-count-badge">0</div></h4>
+        	<div class="heading-elements">
+            <ul class="list-inline mb-0">
+							<li><button type="button" class="btn btn-primary filter-reset-btn">Сбросить</button></li>
+              <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="card-content collapse">
+					<div class="card-body"></div>
+				</div>
+			</div>
+    </div>
+  </div>
+
+  <div class="row" id="grid-container">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+{#					<h4 class="card-title" id="filter-header">jqxGrid - Simple</h4>#}
+        	<div class="heading-elements">
+            <ul class="list-inline mb-0">
+							<li><button type="button" class="btn btn-primary" id="add-row-btn">Добавить строку</button></li>
+						</ul>
+					</div>
+				</div>
+        <div class="card-content">
+					<div class="card-body">
+            <div id="jqxgrid"></div>
+          </div>
+				</div>
+      </div>
+    </div>
+  </div>
+{#  <div id="jqxgrid"></div>#}
+{% endblock %}
+
+{% block vendor_js %}
+  <script type="text/javascript" src="{% static "jqwidgets/jqxcore.js" %}"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxdata.js" %}"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxgrid.js" %}"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxbuttons.js" %}"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxinput.js" %}"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxscrollbar.js" %}"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxmenu.js" %}"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxlistbox.js" %}"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxdropdownlist.js" %}"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxgrid.selection" %}.js"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxgrid.columnsresize" %}.js"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxgrid.filter" %}.js"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxgrid.sort" %}.js"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxgrid.pager" %}.js"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxgrid.grouping" %}.js"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxcheckbox.js" %}"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxgrid.edit.js" %}"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxnumberinput.js" %}"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxcalendar.js" %}"></script>
+  <script type="text/javascript" src="{% static "jqwidgets/jqxdatetimeinput.js" %}"></script>
+  <script type="text/javascript" src="{% static "app-assets/vendors/js/pagination/jquery.twbsPagination.min.js" %}"></script>
+{% endblock %}
+
+{% block page_js %}
+  <script type="text/javascript" src="{% static "js/localization/jqxGrid-ru_RU.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/jqxGrid_utils.js" %}"></script>
+  <script type="text/javascript" src="{% static "demo_grid/js/jqxgrid-simple.js" %}"></script>
+{% endblock %}
