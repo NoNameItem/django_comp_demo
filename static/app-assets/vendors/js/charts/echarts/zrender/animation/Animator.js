@@ -64,7 +64,7 @@ define(function (require) {
         }
     }
 
-    // arr0 is source array, arr1 is target array.
+    // arr0 is employeeSource array, arr1 is target array.
     // Do some preprocess to avoid error happened when interpolating from arr0 to arr1
     function fillArr(arr0, arr1, arrDim) {
         var arr0Len = arr0.length;

@@ -12,7 +12,7 @@
 // ------------------------------
 $(window).on("load", function(){
 
-    // We use an inline data source in the example, usually data would
+    // We use an inline data employeeSource in the example, usually data would
     // be fetched from a server
 
     var data = [],

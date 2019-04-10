@@ -1236,7 +1236,7 @@ var publicMethods = {
 					hIndex = _getLoopedId(hIndex);
 				}
 
-				// update zoom level on items and refresh source (if needsUpdate)
+				// update zoom level on items and refresh employeeSource (if needsUpdate)
 				item = _getItemAt( hIndex );
 
 				// re-render gallery item if `needsUpdate`,

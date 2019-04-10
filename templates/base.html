@@ -66,6 +66,7 @@
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class="{% if request.resolver_match.url_name == "jsgrid-simple" %}active{% endif %}"><a class="menu-item" href="{% url "jsgrid-simple" %}" >jsGrid - Simple</a></li>
                 <li class="{% if request.resolver_match.url_name == "jsgrid-simple-1" %}active{% endif %}"><a class="menu-item" href="{% url "jsgrid-simple-1" %}" >jsGrid - Master-detail</a></li>
+                <li class="{% if request.resolver_match.url_name == "jqxgrid-simple" %}active{% endif %}"><a class="menu-item" href="{% url "jqxgrid-simple" %}" >jqxGrid - Simple</a></li>
             </ul>
           </li>
 
@@ -111,6 +112,7 @@
     <script src="{% static "app-assets/vendors/js/ui/jquery-sliding-menu.js" %}" type="text/javascript"></script>
     <script src="{% static "js/js.cookie.js" %}" type="text/javascript"></script>
     <script src="{% static "bootstrap-notify/bootstrap-notify.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "app-assets/vendors/js/pickers/dateTime/moment-with-locales.min.js" %}" type="text/javascript"></script>
     <!-- END VENDOR JS-->
     <!-- BEGIN PAGE VENDOR JS-->
     {% block vendor_js %}{% endblock %}

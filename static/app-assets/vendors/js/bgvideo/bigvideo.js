@@ -25,7 +25,7 @@
 	$.BigVideo = function(options) {
 
 		var defaults = {
-			// If you want to use a single mp4 source, set as true
+			// If you want to use a single mp4 employeeSource, set as true
 			useFlashForFirefox:true,
 			// If you are doing a playlist, the video won't play the first time
 			// on a touchscreen unless the play event is attached to a user click
@@ -364,7 +364,7 @@
 				playVideo([source]);
 			} else {
 				// fail without valid input
-				throw("BigVideo.show received invalid input for parameter source");
+				throw("BigVideo.show received invalid input for parameter employeeSource");
 			}
 		};
 

@@ -1,5 +1,5 @@
 """
-Template for secure parameters which have no place in source control, like sensitive or installation-specific settings
+Template for secure parameters which have no place in employeeSource control, like sensitive or installation-specific settings
 To deploy set the values and rename file to custom_settings.py
 """
 

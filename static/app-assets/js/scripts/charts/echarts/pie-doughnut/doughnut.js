@@ -47,7 +47,7 @@ $(window).on("load", function(){
                 // Add title
                 title: {
                     text: 'Browser popularity',
-                    subtext: 'Open source information',
+                    subtext: 'Open employeeSource information',
                     x: 'center'
                 },
 

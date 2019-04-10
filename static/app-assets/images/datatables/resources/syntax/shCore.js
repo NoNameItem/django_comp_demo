@@ -90,7 +90,7 @@ var sh = {
         tagName : 'pre',
 
         strings : {
-            expandSource : 'expand source',
+            expandSource : 'expand employeeSource',
             help : '?',
             alert: 'SyntaxHighlighter\n\n',
             noBrush : 'Can\'t find brush for: ',
@@ -292,7 +292,7 @@ var sh = {
 
     /**
      * Shorthand to highlight all elements on the page that are marked as
-     * SyntaxHighlighter source code.
+     * SyntaxHighlighter employeeSource code.
      *
      * @param {Object} globalParams     Optional parameters which override element's
      *                                  parameters. Only used if element is specified.
@@ -416,7 +416,7 @@ function removeClass(target, className)
 };
 
 /**
- * Converts the source to array object. Mostly used for function arguments and
+ * Converts the employeeSource to array object. Mostly used for function arguments and
  * lists returned by getElementsByTagName() which aren't Array objects.
  * @param {List} source Source list.
  * @return {Array} Returns array.
@@ -1155,7 +1155,7 @@ function quickCodeHandler(e)
 
     highlighter = getHighlighterById(highlighterDiv.id);
 
-    // add source class name
+    // add employeeSource class name
     addClass(highlighterDiv, 'source');
 
     // Have to go over each line and grab it's text, can't just do it on the
@@ -1524,7 +1524,7 @@ sh.Highlighter.prototype = {
     },
 
     /**
-     * Finds all matches in the source code.
+     * Finds all matches in the employeeSource code.
      * @param {String} code     Source code to process matches in.
      * @param {Array} matches   Discovered regex matches.
      * @return {String} Returns formatted HTML with processed mathes.

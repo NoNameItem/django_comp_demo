@@ -136,8 +136,8 @@
       },
       escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
       minimumInputLength: 1,
-      templateResult: formatRepo, // omitted for brevity, see the source of this page
-      templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+      templateResult: formatRepo, // omitted for brevity, see the employeeSource of this page
+      templateSelection: formatRepoSelection // omitted for brevity, see the employeeSource of this page
     });
 
     function formatRepo (repo) {
